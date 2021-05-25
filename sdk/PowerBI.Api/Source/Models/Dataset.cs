@@ -13,7 +13,10 @@ namespace Microsoft.PowerBI.Api.Models
     using System.Linq;
 
     /// <summary>
-    /// A Power BI dataset
+    /// A Power BI dataset. Below is a list of properties that may be returned
+    /// for a dataset. Only a subset of the properties will be returned
+    /// depending on the API called, the caller permissions and the
+    /// availability of the data in the Power BI database.
     /// </summary>
     public partial class Dataset
     {
@@ -53,8 +56,12 @@ namespace Microsoft.PowerBI.Api.Models
         /// url</param>
         /// <param name="qnaEmbedURL">The dataset qna embed url</param>
         /// <param name="description">The dataset description</param>
+        /// <param name="endorsementDetails">The dataset endorsement
+        /// details</param>
         /// <param name="datasourceUsages">Datasource usages</param>
         /// <param name="upstreamDataflows">Upstream Dataflows</param>
+        /// <param name="sensitivityLabel">The dataset sensitivity
+        /// label</param>
         public Dataset(string id, string name = default(string), string configuredBy = default(string), bool? addRowsAPIEnabled = default(bool?), string webUrl = default(string), bool? isRefreshable = default(bool?), bool? isEffectiveIdentityRequired = default(bool?), bool? isEffectiveIdentityRolesRequired = default(bool?), bool? isOnPremGatewayRequired = default(bool?), Encryption encryption = default(Encryption), System.DateTime? createdDate = default(System.DateTime?), string contentProviderType = default(string), string createReportEmbedURL = default(string), string qnaEmbedURL = default(string), string description = default(string), EndorsementDetails endorsementDetails = default(EndorsementDetails), IList<DatasourceUsage> datasourceUsages = default(IList<DatasourceUsage>), IList<DependentDataflow> upstreamDataflows = default(IList<DependentDataflow>), SensitivityLabel sensitivityLabel = default(SensitivityLabel))
         {
             Id = id;
@@ -179,6 +186,7 @@ namespace Microsoft.PowerBI.Api.Models
         public string Description { get; set; }
 
         /// <summary>
+        /// Gets or sets the dataset endorsement details
         /// </summary>
         [JsonProperty(PropertyName = "endorsementDetails")]
         public EndorsementDetails EndorsementDetails { get; set; }
@@ -196,6 +204,7 @@ namespace Microsoft.PowerBI.Api.Models
         public IList<DependentDataflow> UpstreamDataflows { get; set; }
 
         /// <summary>
+        /// Gets or sets the dataset sensitivity label
         /// </summary>
         [JsonProperty(PropertyName = "sensitivityLabel")]
         public SensitivityLabel SensitivityLabel { get; set; }

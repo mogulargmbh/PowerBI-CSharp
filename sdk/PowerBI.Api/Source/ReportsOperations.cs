@@ -4187,7 +4187,7 @@ namespace Microsoft.PowerBI.Api
         /// or Report.Read.All&lt;/li&gt;&lt;li&gt;Dataset.ReadWrite.All or
         /// Dataset.Read.All&lt;/li&gt;&lt;/ul&gt;To set the permissions scope, see
         /// [Register an
-        /// app](https://docs.microsoft.com/power-bi/developer/register-app).&lt;/br&gt;&lt;/br&gt;When
+        /// app](https://docs.microsoft.com/power-bi/developer/register-app).&lt;br/&gt;When
         /// using service principal for authentication, refer to [Service Principal
         /// with Power
         /// BI](https://docs.microsoft.com/power-bi/developer/embed-service-principal)
@@ -4361,7 +4361,7 @@ namespace Microsoft.PowerBI.Api
         /// allowSaveAs specified in
         /// [GenerateTokenRequest](/rest/api/power-bi/embedtoken/reports_generatetokeningroup#GenerateTokenRequest)&lt;/li&gt;&lt;/ul&gt;To
         /// set the permissions scope, see [Register an
-        /// app](https://docs.microsoft.com/power-bi/developer/register-app).&lt;/br&gt;&lt;/br&gt;When
+        /// app](https://docs.microsoft.com/power-bi/developer/register-app).&lt;br/&gt;When
         /// using service principal for authentication, refer to [Service Principal
         /// with Power
         /// BI](https://docs.microsoft.com/power-bi/developer/embed-service-principal)
@@ -4528,11 +4528,12 @@ namespace Microsoft.PowerBI.Api
         /// </summary>
         /// <remarks>
         /// **Note:** The user must have administrator rights (such as Office 365
-        /// Global Administrator or Power BI Service Administrator) to call this API.
-        /// &lt;br/&gt;This API allows 200 requests per hour at maximum.
-        /// &lt;br/&gt;&lt;br/&gt;**Required scope**: Tenant.Read.All or
-        /// Tenant.ReadWrite.All&lt;br/&gt;To set the permissions scope, see [Register
-        /// an app](https://docs.microsoft.com/power-bi/developer/register-app).
+        /// Global Administrator or Power BI Service Administrator) to call this API or
+        /// authenticate via service principal. &lt;br/&gt;This API allows 200 requests
+        /// per hour at maximum. &lt;br/&gt;&lt;br/&gt;**Required scope**:
+        /// Tenant.Read.All or Tenant.ReadWrite.All. &lt;br/&gt;Delegated permissions
+        /// are supported. &lt;br/&gt;To set the permissions scope, see [Register an
+        /// app](https://docs.microsoft.com/power-bi/developer/register-app).
         /// </remarks>
         /// <param name='groupId'>
         /// The workspace id
@@ -4696,11 +4697,12 @@ namespace Microsoft.PowerBI.Api
         /// </summary>
         /// <remarks>
         /// **Note:** The user must have administrator rights (such as Office 365
-        /// Global Administrator or Power BI Service Administrator) to call this API.
-        /// &lt;br/&gt;This API allows 200 requests per hour at maximum.
-        /// &lt;br/&gt;&lt;br/&gt;**Required scope**: Tenant.Read.All or
-        /// Tenant.ReadWrite.All&lt;br/&gt;To set the permissions scope, see [Register
-        /// an app](https://docs.microsoft.com/power-bi/developer/register-app).
+        /// Global Administrator or Power BI Service Administrator) to call this API or
+        /// authenticate via service principal. &lt;br/&gt;This API allows 200 requests
+        /// per hour at maximum. &lt;br/&gt;&lt;br/&gt;**Required scope**:
+        /// Tenant.Read.All or Tenant.ReadWrite.All. &lt;br/&gt;Delegated permissions
+        /// are supported. &lt;br/&gt;To set the permissions scope, see [Register an
+        /// app](https://docs.microsoft.com/power-bi/developer/register-app).
         /// </remarks>
         /// <param name='filter'>
         /// Filters the results, based on a boolean condition

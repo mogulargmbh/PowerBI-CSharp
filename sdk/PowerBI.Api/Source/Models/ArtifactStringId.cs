@@ -6,29 +6,30 @@
 
 namespace Microsoft.PowerBI.Api.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Artifact sensitivity label info
+    /// Unique artifact ID: string format (can be uuid) for datasets.
     /// </summary>
-    public partial class SensitivityLabel
+    public partial class ArtifactStringId
     {
         /// <summary>
-        /// Initializes a new instance of the SensitivityLabel class.
+        /// Initializes a new instance of the ArtifactStringId class.
         /// </summary>
-        public SensitivityLabel()
+        public ArtifactStringId()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SensitivityLabel class.
+        /// Initializes a new instance of the ArtifactStringId class.
         /// </summary>
-        /// <param name="labelId">The sensitivity label ID</param>
-        public SensitivityLabel(System.Guid labelId)
+        /// <param name="id">ID</param>
+        public ArtifactStringId(string id)
         {
-            LabelId = labelId;
+            Id = id;
             CustomInit();
         }
 
@@ -38,20 +39,23 @@ namespace Microsoft.PowerBI.Api.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the sensitivity label ID
+        /// Gets or sets ID
         /// </summary>
-        [JsonProperty(PropertyName = "labelId")]
-        public System.Guid LabelId { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public string Id { get; set; }
 
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            //Nothing to validate
+            if (Id == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "Id");
+            }
         }
     }
 }

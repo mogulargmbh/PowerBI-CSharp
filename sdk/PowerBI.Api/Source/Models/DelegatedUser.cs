@@ -6,29 +6,31 @@
 
 namespace Microsoft.PowerBI.Api.Models
 {
+    using Microsoft.Rest;
     using Newtonsoft.Json;
     using System.Linq;
 
     /// <summary>
-    /// Artifact sensitivity label info
+    /// Delegated user details. The user must be an existing user in Power BI
+    /// and Azure AAD, who has signed in to Power BI during the last 3 months.
     /// </summary>
-    public partial class SensitivityLabel
+    public partial class DelegatedUser
     {
         /// <summary>
-        /// Initializes a new instance of the SensitivityLabel class.
+        /// Initializes a new instance of the DelegatedUser class.
         /// </summary>
-        public SensitivityLabel()
+        public DelegatedUser()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SensitivityLabel class.
+        /// Initializes a new instance of the DelegatedUser class.
         /// </summary>
-        /// <param name="labelId">The sensitivity label ID</param>
-        public SensitivityLabel(System.Guid labelId)
+        /// <param name="emailAddress">Delegated user email address.</param>
+        public DelegatedUser(string emailAddress)
         {
-            LabelId = labelId;
+            EmailAddress = emailAddress;
             CustomInit();
         }
 
@@ -38,20 +40,23 @@ namespace Microsoft.PowerBI.Api.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the sensitivity label ID
+        /// Gets or sets delegated user email address.
         /// </summary>
-        [JsonProperty(PropertyName = "labelId")]
-        public System.Guid LabelId { get; set; }
+        [JsonProperty(PropertyName = "emailAddress")]
+        public string EmailAddress { get; set; }
 
         /// <summary>
         /// Validate the object.
         /// </summary>
-        /// <exception cref="Rest.ValidationException">
+        /// <exception cref="ValidationException">
         /// Thrown if validation fails
         /// </exception>
         public virtual void Validate()
         {
-            //Nothing to validate
+            if (EmailAddress == null)
+            {
+                throw new ValidationException(ValidationRules.CannotBeNull, "EmailAddress");
+            }
         }
     }
 }

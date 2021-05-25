@@ -10,25 +10,25 @@ namespace Microsoft.PowerBI.Api.Models
     using System.Linq;
 
     /// <summary>
-    /// Artifact sensitivity label info
+    /// Unique artifact ID: uuid format for dashboards/reports/dataflows.
     /// </summary>
-    public partial class SensitivityLabel
+    public partial class ArtifactId
     {
         /// <summary>
-        /// Initializes a new instance of the SensitivityLabel class.
+        /// Initializes a new instance of the ArtifactId class.
         /// </summary>
-        public SensitivityLabel()
+        public ArtifactId()
         {
             CustomInit();
         }
 
         /// <summary>
-        /// Initializes a new instance of the SensitivityLabel class.
+        /// Initializes a new instance of the ArtifactId class.
         /// </summary>
-        /// <param name="labelId">The sensitivity label ID</param>
-        public SensitivityLabel(System.Guid labelId)
+        /// <param name="id">ID</param>
+        public ArtifactId(System.Guid id)
         {
-            LabelId = labelId;
+            Id = id;
             CustomInit();
         }
 
@@ -38,10 +38,10 @@ namespace Microsoft.PowerBI.Api.Models
         partial void CustomInit();
 
         /// <summary>
-        /// Gets or sets the sensitivity label ID
+        /// Gets or sets ID
         /// </summary>
-        [JsonProperty(PropertyName = "labelId")]
-        public System.Guid LabelId { get; set; }
+        [JsonProperty(PropertyName = "id")]
+        public System.Guid Id { get; set; }
 
         /// <summary>
         /// Validate the object.
