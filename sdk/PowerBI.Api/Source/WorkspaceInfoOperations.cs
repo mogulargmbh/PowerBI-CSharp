@@ -266,7 +266,7 @@ namespace Microsoft.PowerBI.Api
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "v1.0/myorg/admin/workspaces/scanStatus").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "v1.0/myorg/admin/workspaces/scanStatus/{scanId}").ToString();
             _url = _url.Replace("{scanId}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(scanId, Client.SerializationSettings).Trim('"')));
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
@@ -407,7 +407,7 @@ namespace Microsoft.PowerBI.Api
             }
             // Construct URL
             var _baseUrl = Client.BaseUri.AbsoluteUri;
-            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "v1.0/myorg/admin/workspaces/scanResult").ToString();
+            var _url = new System.Uri(new System.Uri(_baseUrl + (_baseUrl.EndsWith("/") ? "" : "/")), "v1.0/myorg/admin/workspaces/scanResult/{scanId}").ToString();
             _url = _url.Replace("{scanId}", System.Uri.EscapeDataString(Rest.Serialization.SafeJsonConvert.SerializeObject(scanId, Client.SerializationSettings).Trim('"')));
             // Create HTTP transport objects
             var _httpRequest = new HttpRequestMessage();
@@ -636,7 +636,8 @@ namespace Microsoft.PowerBI.Api
                 _responseContent = await _httpResponse.Content.ReadAsStringAsync().ConfigureAwait(false);
                 try
                 {
-                    _result.Body = Rest.Serialization.SafeJsonConvert.DeserializeObject<ModifiedWorkspaces>(_responseContent, Client.DeserializationSettings);
+                    var res = Rest.Serialization.SafeJsonConvert.DeserializeObject<IList<ModifiedWorkspace>>(_responseContent, Client.DeserializationSettings);
+                    _result.Body = new ModifiedWorkspaces(null, res);
                 }
                 catch (JsonException ex)
                 {
