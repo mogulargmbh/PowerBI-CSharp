@@ -1,3 +1,5 @@
+# [DEPRECATED] we don't use this anymore
+
 # Power BI for .NET
 
 Welcome to the .NET developer community for Power BI Embedded.  Here you will find resources for the .NET SDKs for Power BI Embedded.
